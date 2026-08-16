@@ -3,7 +3,6 @@
   "name": "Amazon & eBay Reseller Profit Calculator",
   "version": "1.0.0",
   "description": "Berechne sofort Reingewinn, Marge und ROI für Amazon- und eBay-Angebote. Automatischer Preis-Import direkt von der Produktseite.",
-  "default_locale": "de",
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
