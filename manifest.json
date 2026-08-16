@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "Amazon & eBay Reseller Profit Calculator",
+  "version": "1.0.0",
+  "description": "Berechne sofort Reingewinn, Marge und ROI für Amazon- und eBay-Angebote. Automatischer Preis-Import direkt von der Produktseite.",
+  "default_locale": "de",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://*.amazon.com/*",
+    "https://*.amazon.de/*",
+    "https://*.ebay.com/*",
+    "https://*.ebay.de/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.amazon.com/*",
+        "https://*.amazon.de/*",
+        "https://*.ebay.com/*",
+        "https://*.ebay.de/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

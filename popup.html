@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reseller Profit Calculator</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div class="brand">
+        <img src="icons/icon32.png" alt="" class="brand-icon" />
+        <div class="brand-text">
+          <h1>Profit Calculator</h1>
+          <span class="brand-subtitle">Amazon &amp; eBay Reseller</span>
+        </div>
+      </div>
+      <span id="proBadge" class="pro-badge pro-badge--hidden">PRO</span>
+    </header>
+
+    <section class="product-panel" id="productPanel">
+      <div class="product-panel__row">
+        <span class="product-panel__platform" id="platformLabel">Keine Produktseite erkannt</span>
+        <button type="button" id="refreshPriceBtn" class="btn-icon" title="Preis von der Seite neu importieren">
+          &#8635;
+        </button>
+      </div>
+      <p class="product-panel__title" id="productTitle">Öffne ein Amazon- oder eBay-Produkt, um Daten automatisch zu importieren.</p>
+    </section>
+
+    <form id="calculatorForm" class="calculator-form">
+      <div class="field">
+        <label for="sellingPrice">Verkaufspreis (€)</label>
+        <input type="number" id="sellingPrice" name="sellingPrice" step="0.01" min="0" placeholder="0.00" inputmode="decimal" />
+      </div>
+
+      <div class="field">
+        <label for="costPrice">Einkaufspreis (€)</label>
+        <input type="number" id="costPrice" name="costPrice" step="0.01" min="0" placeholder="0.00" inputmode="decimal" />
+      </div>
+
+      <div class="field">
+        <label for="shippingCost">Versandkosten (€)</label>
+        <input type="number" id="shippingCost" name="shippingCost" step="0.01" min="0" placeholder="0.00" inputmode="decimal" />
+      </div>
+
+      <div class="field">
+        <label for="platformFee">Plattformgebühr (%)</label>
+        <input type="number" id="platformFee" name="platformFee" step="0.1" min="0" max="100" placeholder="12" inputmode="decimal" />
+      </div>
+    </form>
+
+    <section class="results">
+      <div class="result-card">
+        <span class="result-card__label">Reingewinn</span>
+        <span class="result-card__value" id="netProfitValue">0,00 €</span>
+      </div>
+      <div class="result-card">
+        <span class="result-card__label">Marge</span>
+        <span class="result-card__value" id="marginValue">0,0 %</span>
+      </div>
+      <div class="result-card">
+        <span class="result-card__label">ROI</span>
+        <span class="result-card__value" id="roiValue">0,0 %</span>
+      </div>
+    </section>
+
+    <section class="actions">
+      <button type="button" id="csvExportBtn" class="btn btn--secondary">
+        <span class="btn-lock">&#128274;</span> CSV Export
+      </button>
+      <button type="button" id="feePresetsBtn" class="btn btn--secondary">
+        <span class="btn-lock">&#128274;</span> Gebühren-Presets
+      </button>
+    </section>
+
+    <section id="feePresetsPanel" class="fee-presets fee-presets--hidden">
+      <button type="button" class="fee-preset" data-fee="15">Amazon Standard · 15%</button>
+      <button type="button" class="fee-preset" data-fee="10">eBay Standard · 10%</button>
+      <button type="button" class="fee-preset" data-fee="6.5">Etsy · 6,5%</button>
+      <button type="button" class="fee-preset" data-fee="12">Sonstige · 12%</button>
+    </section>
+
+    <footer class="app-footer">
+      <label class="demo-toggle">
+        <input type="checkbox" id="demoProToggle" />
+        <span>Demo: Pro-Modus aktivieren</span>
+      </label>
+    </footer>
+  </div>
+
+  <div id="proModalOverlay" class="modal-overlay modal-overlay--hidden">
+    <div class="modal">
+      <div class="modal__icon">&#10024;</div>
+      <h2 class="modal__title">Pro-Feature</h2>
+      <p class="modal__text">Dieses Feature erfordert das Pro-Upgrade ($5 Einmalkauf).</p>
+      <div class="modal__actions">
+        <button type="button" id="modalUpgradeBtn" class="btn btn--primary">Jetzt upgraden</button>
+        <button type="button" id="modalCloseBtn" class="btn btn--ghost">Schließen</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
