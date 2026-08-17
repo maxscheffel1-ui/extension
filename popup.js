@@ -5,7 +5,6 @@ const FREE_WORKSPACE_LIMIT = 3;
 
 const els = {
   proBadge: document.getElementById("proBadge"),
-  devToggleBtn: document.getElementById("devToggleBtn"),
   statusToast: document.getElementById("statusToast"),
   showCreateFormBtn: document.getElementById("showCreateFormBtn"),
   createForm: document.getElementById("createForm"),
@@ -92,8 +91,6 @@ function formatRelativeDate(timestamp) {
 
 function updateProUI() {
   els.proBadge.classList.toggle("pro-badge--hidden", !isProUser);
-  els.devToggleBtn.classList.toggle("is-active", isProUser);
-  els.devToggleBtn.textContent = isProUser ? "DEV: PRO AN" : "DEV";
 
   els.exportImportLock.style.display = isProUser ? "none" : "inline";
   const ramCleanerLock = els.ramCleanerBtn.querySelector(".btn-lock");
@@ -402,13 +399,6 @@ function bindEvents() {
       return;
     }
     runRamCleaner();
-  });
-
-  els.devToggleBtn.addEventListener("click", () => {
-    isProUser = !isProUser;
-    chrome.storage.local.set({ isProUser });
-    updateProUI();
-    showToast(isProUser ? "Dev-Modus: Pro aktiviert." : "Dev-Modus: Pro deaktiviert.");
   });
 
   els.modalCloseBtn.addEventListener("click", hideProModal);
