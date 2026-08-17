@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <title>Reseller Profit Calculator</title>
+  <title>Workspace &amp; Session Manager</title>
   <link rel="stylesheet" href="popup.css" />
 </head>
 <body>
@@ -11,81 +11,58 @@
       <div class="brand">
         <img src="icons/icon32.png" alt="" class="brand-icon" />
         <div class="brand-text">
-          <h1>Profit Calculator</h1>
-          <span class="brand-subtitle">Amazon &amp; eBay Reseller</span>
+          <h1>Workspace Manager</h1>
+          <span class="brand-subtitle">Tabs speichern &amp; wechseln</span>
         </div>
       </div>
-      <span id="proBadge" class="pro-badge pro-badge--hidden">PRO</span>
+      <div class="header-actions">
+        <span id="proBadge" class="pro-badge pro-badge--hidden">PRO</span>
+        <button type="button" id="devToggleBtn" class="dev-toggle" title="Nur für Testzwecke: Pro-Status umschalten">DEV</button>
+      </div>
     </header>
 
-    <section class="product-panel" id="productPanel">
-      <div class="product-panel__row">
-        <span class="product-panel__platform" id="platformLabel">Keine Produktseite erkannt</span>
-        <button type="button" id="refreshPriceBtn" class="btn-icon" title="Preis von der Seite neu importieren">
-          &#8635;
-        </button>
-      </div>
-      <p class="product-panel__title" id="productTitle">Öffne ein Amazon- oder eBay-Produkt, um Daten automatisch zu importieren.</p>
-    </section>
+    <section id="statusToast" class="status-toast status-toast--hidden"></section>
 
-    <form id="calculatorForm" class="calculator-form">
-      <div class="field">
-        <label for="sellingPrice">Verkaufspreis (€)</label>
-        <input type="number" id="sellingPrice" name="sellingPrice" step="0.01" min="0" placeholder="0.00" inputmode="decimal" />
-      </div>
-
-      <div class="field">
-        <label for="costPrice">Einkaufspreis (€)</label>
-        <input type="number" id="costPrice" name="costPrice" step="0.01" min="0" placeholder="0.00" inputmode="decimal" />
-      </div>
-
-      <div class="field">
-        <label for="shippingCost">Versandkosten (€)</label>
-        <input type="number" id="shippingCost" name="shippingCost" step="0.01" min="0" placeholder="0.00" inputmode="decimal" />
-      </div>
-
-      <div class="field">
-        <label for="platformFee">Plattformgebühr (%)</label>
-        <input type="number" id="platformFee" name="platformFee" step="0.1" min="0" max="100" placeholder="12" inputmode="decimal" />
-      </div>
-    </form>
-
-    <section class="results">
-      <div class="result-card">
-        <span class="result-card__label">Reingewinn</span>
-        <span class="result-card__value" id="netProfitValue">0,00 €</span>
-      </div>
-      <div class="result-card">
-        <span class="result-card__label">Marge</span>
-        <span class="result-card__value" id="marginValue">0,0 %</span>
-      </div>
-      <div class="result-card">
-        <span class="result-card__label">ROI</span>
-        <span class="result-card__value" id="roiValue">0,0 %</span>
-      </div>
-    </section>
-
-    <section class="actions">
-      <button type="button" id="csvExportBtn" class="btn btn--secondary">
-        <span class="btn-lock">&#128274;</span> CSV Export
+    <section class="create-section">
+      <button type="button" id="showCreateFormBtn" class="btn btn--primary btn--full">
+        <span class="btn-plus">+</span> Aktuellen Workspace speichern
       </button>
-      <button type="button" id="feePresetsBtn" class="btn btn--secondary">
-        <span class="btn-lock">&#128274;</span> Gebühren-Presets
-      </button>
+
+      <div id="createForm" class="create-form create-form--hidden">
+        <input type="text" id="workspaceNameInput" class="text-input" placeholder="Name, z. B. Arbeit, Recherche, Privat" maxlength="60" />
+        <div class="create-form__actions">
+          <button type="button" id="confirmCreateBtn" class="btn btn--primary">Speichern</button>
+          <button type="button" id="cancelCreateBtn" class="btn btn--ghost">Abbrechen</button>
+        </div>
+      </div>
+
+      <p id="limitInfo" class="limit-info"></p>
     </section>
 
-    <section id="feePresetsPanel" class="fee-presets fee-presets--hidden">
-      <button type="button" class="fee-preset" data-fee="15">Amazon Standard · 15%</button>
-      <button type="button" class="fee-preset" data-fee="10">eBay Standard · 10%</button>
-      <button type="button" class="fee-preset" data-fee="6.5">Etsy · 6,5%</button>
-      <button type="button" class="fee-preset" data-fee="12">Sonstige · 12%</button>
+    <section class="workspace-list-section">
+      <div id="emptyState" class="empty-state empty-state--hidden">
+        <p>Noch keine Workspaces gespeichert.</p>
+        <p class="empty-state__hint">Speichere deine aktuell geöffneten Tabs, um schnell zwischen Kontexten zu wechseln.</p>
+      </div>
+      <div id="workspaceList" class="workspace-list"></div>
+    </section>
+
+    <section class="pro-tools">
+      <div class="pro-feature-group">
+        <span class="pro-feature-group__label"><span class="btn-lock" id="exportImportLock">&#128274;</span> Workspaces exportieren / importieren</span>
+        <div class="pro-feature-group__actions">
+          <button type="button" id="exportBtn" class="btn btn--secondary btn--small btn--half">Exportieren</button>
+          <button type="button" id="importBtn" class="btn btn--secondary btn--small btn--half">Importieren</button>
+        </div>
+      </div>
+      <button type="button" id="ramCleanerBtn" class="btn btn--secondary btn--full">
+        <span class="btn-lock">&#128274;</span> RAM Cleaner &ndash; inaktive Tabs schließen
+      </button>
+      <input type="file" id="importFileInput" accept="application/json" hidden />
     </section>
 
     <footer class="app-footer">
-      <label class="demo-toggle">
-        <input type="checkbox" id="demoProToggle" />
-        <span>Demo: Pro-Modus aktivieren</span>
-      </label>
+      <span class="app-footer__text">Workspace &amp; Session Manager · v1.0.0</span>
     </footer>
   </div>
 
@@ -93,13 +70,44 @@
     <div class="modal">
       <div class="modal__icon">&#10024;</div>
       <h2 class="modal__title">Pro-Feature</h2>
-      <p class="modal__text">Dieses Feature erfordert das Pro-Upgrade ($5 Einmalkauf).</p>
+      <p class="modal__text" id="proModalText">Dieses Feature erfordert das Pro-Upgrade ($5 Einmalkauf).</p>
       <div class="modal__actions">
         <button type="button" id="modalUpgradeBtn" class="btn btn--primary">Jetzt upgraden</button>
         <button type="button" id="modalCloseBtn" class="btn btn--ghost">Schließen</button>
       </div>
     </div>
   </div>
+
+  <template id="workspaceCardTemplate">
+    <article class="workspace-card">
+      <div class="workspace-card__header">
+        <div class="workspace-card__title-group">
+          <h3 class="workspace-card__name"></h3>
+          <span class="workspace-card__meta"></span>
+        </div>
+        <button type="button" class="icon-btn workspace-card__toggle" title="Tabs anzeigen">
+          <span class="chevron">&#9662;</span>
+        </button>
+      </div>
+      <div class="workspace-card__actions">
+        <button type="button" class="btn btn--primary btn--small workspace-card__switch">Wechseln</button>
+        <button type="button" class="icon-btn workspace-card__rename" title="Umbenennen">&#9998;</button>
+        <button type="button" class="icon-btn icon-btn--danger workspace-card__delete" title="Löschen">&#128465;</button>
+      </div>
+      <div class="workspace-card__tabs workspace-card__tabs--hidden"></div>
+    </article>
+  </template>
+
+  <template id="tabRowTemplate">
+    <div class="tab-row">
+      <img class="tab-row__favicon" alt="" />
+      <div class="tab-row__text">
+        <span class="tab-row__title"></span>
+        <span class="tab-row__url"></span>
+      </div>
+      <button type="button" class="icon-btn icon-btn--small tab-row__remove" title="Tab aus Workspace entfernen">&#10005;</button>
+    </div>
+  </template>
 
   <script src="popup.js"></script>
 </body>

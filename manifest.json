@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Amazon & eBay Reseller Profit Calculator",
+  "name": "Workspace & Session Manager",
   "version": "1.0.0",
-  "description": "Berechne sofort Reingewinn, Marge und ROI für Amazon- und eBay-Angebote. Automatischer Preis-Import direkt von der Produktseite.",
+  "description": "Speichere geöffnete Tabs als Workspace, wechsle mit einem Klick zwischen Sessions und spare RAM. Pro-Upgrade für unbegrenzte Workspaces, Export/Import und RAM-Cleaner.",
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
@@ -10,7 +10,8 @@
       "32": "icons/icon32.png",
       "48": "icons/icon48.png",
       "128": "icons/icon128.png"
-    }
+    },
+    "default_title": "Workspace & Session Manager"
   },
   "icons": {
     "16": "icons/icon16.png",
@@ -23,25 +24,8 @@
   },
   "permissions": [
     "storage",
-    "activeTab",
-    "scripting"
-  ],
-  "host_permissions": [
-    "https://*.amazon.com/*",
-    "https://*.amazon.de/*",
-    "https://*.ebay.com/*",
-    "https://*.ebay.de/*"
-  ],
-  "content_scripts": [
-    {
-      "matches": [
-        "https://*.amazon.com/*",
-        "https://*.amazon.de/*",
-        "https://*.ebay.com/*",
-        "https://*.ebay.de/*"
-      ],
-      "js": ["content.js"],
-      "run_at": "document_idle"
-    }
+    "tabs",
+    "tabGroups",
+    "activeTab"
   ]
 }
