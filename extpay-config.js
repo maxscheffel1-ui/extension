@@ -1,1 +1,1 @@
-const EXTPAY_EXTENSION_ID = "workspace-session-manager";
+const EXTPAY_EXTENSION_ID = "workspace-manager";
