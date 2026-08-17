@@ -1,3 +1,12 @@
+importScripts("ExtPay.js", "extpay-config.js");
+
+const extpay = ExtPay(EXTPAY_EXTENSION_ID);
+extpay.startBackground();
+
+extpay.onPaid.addListener(() => {
+  chrome.runtime.sendMessage({ type: "PRO_STATUS_CHANGED" }).catch(() => {});
+});
+
 const INACTIVE_THRESHOLD_MS = 30 * 60 * 1000;
 const NONE_GROUP_ID = chrome.tabGroups ? chrome.tabGroups.TAB_GROUP_ID_NONE : -1;
 
@@ -5,7 +14,6 @@ chrome.runtime.onInstalled.addListener((details) => {
   if (details.reason === "install") {
     chrome.storage.local.set({
       workspaces: [],
-      isProUser: false,
       installedAt: Date.now()
     });
   }

@@ -2,6 +2,7 @@ let isProUser = false;
 let workspaces = [];
 
 const FREE_WORKSPACE_LIMIT = 3;
+const extpay = ExtPay(EXTPAY_EXTENSION_ID);
 
 const LOCALE_DATE_TAGS = {
   en: "en-US",
@@ -77,12 +78,22 @@ function saveWorkspacesToStorage() {
 
 function loadStateFromStorage() {
   return new Promise((resolve) => {
-    chrome.storage.local.get(["workspaces", "isProUser"], (result) => {
+    chrome.storage.local.get(["workspaces"], (result) => {
       workspaces = Array.isArray(result.workspaces) ? result.workspaces : [];
-      isProUser = result.isProUser === true;
       resolve();
     });
   });
+}
+
+function loadProStatus() {
+  return extpay
+    .getUser()
+    .then((user) => {
+      isProUser = user.paid === true;
+    })
+    .catch(() => {
+      isProUser = false;
+    });
 }
 
 function getCurrentWindowId() {
@@ -440,9 +451,23 @@ function bindEvents() {
   });
 
   els.modalCloseBtn.addEventListener("click", hideProModal);
-  els.modalUpgradeBtn.addEventListener("click", hideProModal);
+  els.modalUpgradeBtn.addEventListener("click", () => {
+    hideProModal();
+    extpay.openPaymentPage();
+  });
   els.proModalOverlay.addEventListener("click", (event) => {
     if (event.target === els.proModalOverlay) hideProModal();
+  });
+
+  chrome.runtime.onMessage.addListener((message) => {
+    if (message && message.type === "PRO_STATUS_CHANGED") {
+      loadProStatus().then(renderWorkspaceList);
+    }
+  });
+
+  extpay.onPaid.addListener(() => {
+    isProUser = true;
+    renderWorkspaceList();
   });
 }
 
@@ -450,7 +475,7 @@ async function init() {
   document.documentElement.lang = chrome.i18n.getUILanguage();
   applyI18n(document);
   els.proModalText.textContent = t("proGateGeneric");
-  await loadStateFromStorage();
+  await Promise.all([loadStateFromStorage(), loadProStatus()]);
   renderWorkspaceList();
   bindEvents();
 }
