@@ -3,6 +3,36 @@ let workspaces = [];
 
 const FREE_WORKSPACE_LIMIT = 3;
 
+const LOCALE_DATE_TAGS = {
+  en: "en-US",
+  de: "de-DE",
+  es: "es-ES",
+  fr: "fr-FR",
+  pt: "pt-PT",
+  ja: "ja-JP"
+};
+
+function t(key, substitutions) {
+  return chrome.i18n.getMessage(key, substitutions) || key;
+}
+
+function pluralKey(count, oneKey, otherKey) {
+  return count === 1 ? oneKey : otherKey;
+}
+
+function applyI18n(root) {
+  const scope = root || document;
+  scope.querySelectorAll("[data-i18n]").forEach((el) => {
+    el.textContent = t(el.getAttribute("data-i18n"));
+  });
+  scope.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+    el.placeholder = t(el.getAttribute("data-i18n-placeholder"));
+  });
+  scope.querySelectorAll("[data-i18n-title]").forEach((el) => {
+    el.title = t(el.getAttribute("data-i18n-title"));
+  });
+}
+
 const els = {
   proBadge: document.getElementById("proBadge"),
   statusToast: document.getElementById("statusToast"),
@@ -69,7 +99,7 @@ function sendBackgroundMessage(message) {
         return;
       }
       if (!response || response.success !== true) {
-        reject(new Error((response && response.error) || "Unbekannter Fehler"));
+        reject(new Error((response && response.error) || t("genericErrorUnknown")));
         return;
       }
       resolve(response);
@@ -80,13 +110,19 @@ function sendBackgroundMessage(message) {
 function formatRelativeDate(timestamp) {
   const diffMs = Date.now() - timestamp;
   const minutes = Math.floor(diffMs / 60000);
-  if (minutes < 1) return "gerade eben";
-  if (minutes < 60) return `vor ${minutes} Min.`;
+  if (minutes < 1) return t("timeJustNow");
+  if (minutes < 60) return t("timeMinutesAgo", [String(minutes)]);
   const hours = Math.floor(minutes / 60);
-  if (hours < 24) return `vor ${hours} Std.`;
+  if (hours < 24) return t("timeHoursAgo", [String(hours)]);
   const days = Math.floor(hours / 24);
-  if (days < 30) return `vor ${days} Tag${days === 1 ? "" : "en"}`;
-  return new Date(timestamp).toLocaleDateString("de-DE");
+  if (days < 30) return t(pluralKey(days, "timeDaysAgoOne", "timeDaysAgoOther"), [String(days)]);
+  const baseLang = chrome.i18n.getUILanguage().split("-")[0];
+  const dateTag = LOCALE_DATE_TAGS[baseLang] || "en-US";
+  return new Date(timestamp).toLocaleDateString(dateTag);
+}
+
+function formatTabCount(count) {
+  return t(pluralKey(count, "tabCountOne", "tabCountOther"), [String(count)]);
 }
 
 function updateProUI() {
@@ -100,12 +136,13 @@ function updateProUI() {
     els.limitInfo.textContent = "";
   } else {
     const remaining = Math.max(0, FREE_WORKSPACE_LIMIT - workspaces.length);
-    els.limitInfo.textContent = `${workspaces.length} von ${FREE_WORKSPACE_LIMIT} kostenlosen Workspaces genutzt${remaining === 0 ? " · Limit erreicht" : ""}`;
+    const key = remaining === 0 ? "freeLimitUsageReached" : "freeLimitUsage";
+    els.limitInfo.textContent = t(key, [String(workspaces.length), String(FREE_WORKSPACE_LIMIT)]);
   }
 }
 
 function showProModal(text) {
-  els.proModalText.textContent = text || "Dieses Feature erfordert das Pro-Upgrade ($5 Einmalkauf).";
+  els.proModalText.textContent = text || t("proGateGeneric");
   els.proModalOverlay.classList.remove("modal-overlay--hidden");
 }
 
@@ -115,6 +152,7 @@ function hideProModal() {
 
 function buildTabRow(tabData, onRemove) {
   const fragment = els.tabRowTemplate.content.cloneNode(true);
+  applyI18n(fragment);
   const row = fragment.querySelector(".tab-row");
   const favicon = fragment.querySelector(".tab-row__favicon");
   const title = fragment.querySelector(".tab-row__title");
@@ -137,6 +175,7 @@ function buildTabRow(tabData, onRemove) {
 
 function buildWorkspaceCard(workspace) {
   const fragment = els.workspaceCardTemplate.content.cloneNode(true);
+  applyI18n(fragment);
   const card = fragment.querySelector(".workspace-card");
   const nameEl = fragment.querySelector(".workspace-card__name");
   const metaEl = fragment.querySelector(".workspace-card__meta");
@@ -147,8 +186,7 @@ function buildWorkspaceCard(workspace) {
   const tabsContainer = fragment.querySelector(".workspace-card__tabs");
 
   nameEl.textContent = workspace.name;
-  const tabCount = workspace.tabs.length;
-  metaEl.textContent = `${tabCount} Tab${tabCount === 1 ? "" : "s"} · ${formatRelativeDate(workspace.updatedAt)}`;
+  metaEl.textContent = `${formatTabCount(workspace.tabs.length)} · ${formatRelativeDate(workspace.updatedAt)}`;
 
   toggleBtn.addEventListener("click", () => {
     const isHidden = tabsContainer.classList.toggle("workspace-card__tabs--hidden");
@@ -160,25 +198,26 @@ function buildWorkspaceCard(workspace) {
 
   switchBtn.addEventListener("click", async () => {
     if (workspace.tabs.length === 0) {
-      showToast("Dieser Workspace enthält keine Tabs mehr.", true);
+      showToast(t("toastWorkspaceEmpty"), true);
       return;
     }
+    const originalLabel = switchBtn.textContent;
     switchBtn.disabled = true;
-    switchBtn.textContent = "Wechsle...";
+    switchBtn.textContent = t("switchingBtn");
     try {
       const windowId = await getCurrentWindowId();
       await sendBackgroundMessage({ type: "SWITCH_WORKSPACE", windowId, workspace });
-      showToast(`Workspace "${workspace.name}" geladen.`);
+      showToast(t("toastWorkspaceSwitched", [workspace.name]));
     } catch (error) {
-      showToast("Wechsel fehlgeschlagen.", true);
+      showToast(t("toastSwitchFailed"), true);
     } finally {
       switchBtn.disabled = false;
-      switchBtn.textContent = "Wechseln";
+      switchBtn.textContent = originalLabel;
     }
   });
 
   renameBtn.addEventListener("click", () => {
-    const newName = prompt("Neuer Name für den Workspace:", workspace.name);
+    const newName = prompt(t("renamePromptLabel"), workspace.name);
     if (!newName) return;
     const trimmed = newName.trim();
     if (!trimmed) return;
@@ -188,7 +227,7 @@ function buildWorkspaceCard(workspace) {
   });
 
   deleteBtn.addEventListener("click", () => {
-    const confirmed = confirm(`Workspace "${workspace.name}" wirklich löschen?`);
+    const confirmed = confirm(t("deleteConfirmMessage", [workspace.name]));
     if (!confirmed) return;
     workspaces = workspaces.filter((ws) => ws.id !== workspace.id);
     saveWorkspacesToStorage().then(renderWorkspaceList);
@@ -201,12 +240,11 @@ function renderTabRows(workspace, container, metaEl) {
   container.innerHTML = "";
   workspace.tabs.forEach((tabData) => {
     const row = buildTabRow(tabData, () => {
-      workspace.tabs = workspace.tabs.filter((t) => t !== tabData);
+      workspace.tabs = workspace.tabs.filter((entry) => entry !== tabData);
       workspace.updatedAt = Date.now();
       saveWorkspacesToStorage().then(() => {
         renderTabRows(workspace, container, metaEl);
-        const tabCount = workspace.tabs.length;
-        metaEl.textContent = `${tabCount} Tab${tabCount === 1 ? "" : "s"} · ${formatRelativeDate(workspace.updatedAt)}`;
+        metaEl.textContent = `${formatTabCount(workspace.tabs.length)} · ${formatRelativeDate(workspace.updatedAt)}`;
       });
     });
     container.appendChild(row);
@@ -238,7 +276,7 @@ function toggleCreateForm(show) {
 
 async function createWorkspaceFromCurrentTabs() {
   if (!isProUser && workspaces.length >= FREE_WORKSPACE_LIMIT) {
-    showProModal(`Du hast das kostenlose Limit von ${FREE_WORKSPACE_LIMIT} Workspaces erreicht. Dieses Feature erfordert das Pro-Upgrade ($5 Einmalkauf).`);
+    showProModal(t("proGateLimitReached", [String(FREE_WORKSPACE_LIMIT)]));
     return;
   }
 
@@ -255,7 +293,7 @@ async function createWorkspaceFromCurrentTabs() {
     const snapshot = response.snapshot;
 
     if (!snapshot.tabs.length) {
-      showToast("Keine Tabs zum Speichern gefunden.", true);
+      showToast(t("toastNoTabsFound"), true);
       return;
     }
 
@@ -272,9 +310,9 @@ async function createWorkspaceFromCurrentTabs() {
     await saveWorkspacesToStorage();
     renderWorkspaceList();
     toggleCreateForm(false);
-    showToast(`Workspace "${workspace.name}" gespeichert.`);
+    showToast(t("toastWorkspaceSaved", [workspace.name]));
   } catch (error) {
-    showToast("Speichern fehlgeschlagen.", true);
+    showToast(t("toastSaveFailed"), true);
   } finally {
     els.confirmCreateBtn.disabled = false;
   }
@@ -295,7 +333,7 @@ function exportWorkspaces() {
   link.click();
   document.body.removeChild(link);
   URL.revokeObjectURL(url);
-  showToast("Export gestartet.");
+  showToast(t("toastExportStarted"));
 }
 
 function importWorkspacesFromFile(file) {
@@ -304,7 +342,7 @@ function importWorkspacesFromFile(file) {
     try {
       const parsed = JSON.parse(String(reader.result));
       const importedList = Array.isArray(parsed) ? parsed : parsed.workspaces;
-      if (!Array.isArray(importedList)) throw new Error("Ungültiges Format");
+      if (!Array.isArray(importedList)) throw new Error("Invalid format");
 
       const validImports = importedList
         .filter((item) => item && typeof item.name === "string" && Array.isArray(item.tabs))
@@ -314,28 +352,28 @@ function importWorkspacesFromFile(file) {
           createdAt: Date.now(),
           updatedAt: Date.now(),
           tabs: item.tabs
-            .filter((t) => t && typeof t.url === "string")
-            .map((t) => ({
-              url: t.url,
-              title: typeof t.title === "string" ? t.title : t.url,
-              favIconUrl: typeof t.favIconUrl === "string" ? t.favIconUrl : "",
-              pinned: t.pinned === true,
-              groupKey: typeof t.groupKey === "string" ? t.groupKey : null
+            .filter((tabItem) => tabItem && typeof tabItem.url === "string")
+            .map((tabItem) => ({
+              url: tabItem.url,
+              title: typeof tabItem.title === "string" ? tabItem.title : tabItem.url,
+              favIconUrl: typeof tabItem.favIconUrl === "string" ? tabItem.favIconUrl : "",
+              pinned: tabItem.pinned === true,
+              groupKey: typeof tabItem.groupKey === "string" ? tabItem.groupKey : null
             })),
           groups: Array.isArray(item.groups) ? item.groups : []
         }));
 
       if (!validImports.length) {
-        showToast("Keine gültigen Workspaces in der Datei gefunden.", true);
+        showToast(t("toastNoValidWorkspaces"), true);
         return;
       }
 
       workspaces = workspaces.concat(validImports);
       await saveWorkspacesToStorage();
       renderWorkspaceList();
-      showToast(`${validImports.length} Workspace(s) importiert.`);
+      showToast(t(pluralKey(validImports.length, "toastImportedCountOne", "toastImportedCountOther"), [String(validImports.length)]));
     } catch (error) {
-      showToast("Import fehlgeschlagen: ungültige Datei.", true);
+      showToast(t("toastImportFailed"), true);
     }
   };
   reader.readAsText(file);
@@ -347,12 +385,12 @@ async function runRamCleaner() {
     const windowId = await getCurrentWindowId();
     const response = await sendBackgroundMessage({ type: "RAM_CLEANER", windowId });
     if (response.closedCount > 0) {
-      showToast(`${response.closedCount} doppelte/inaktive Tab(s) geschlossen.`);
+      showToast(t(pluralKey(response.closedCount, "toastRamCleanerClosedOne", "toastRamCleanerClosedOther"), [String(response.closedCount)]));
     } else {
-      showToast("Keine doppelten oder inaktiven Tabs gefunden.");
+      showToast(t("toastRamCleanerNone"));
     }
   } catch (error) {
-    showToast("RAM Cleaner fehlgeschlagen.", true);
+    showToast(t("toastRamCleanerFailed"), true);
   } finally {
     els.ramCleanerBtn.disabled = false;
   }
@@ -369,11 +407,11 @@ function bindEvents() {
 
   els.exportBtn.addEventListener("click", () => {
     if (!isProUser) {
-      showProModal("Export/Import erfordert das Pro-Upgrade ($5 Einmalkauf).");
+      showProModal(t("proGateExportImport"));
       return;
     }
     if (workspaces.length === 0) {
-      showToast("Keine Workspaces zum Exportieren vorhanden.", true);
+      showToast(t("toastNoWorkspacesToExport"), true);
       return;
     }
     exportWorkspaces();
@@ -381,7 +419,7 @@ function bindEvents() {
 
   els.importBtn.addEventListener("click", () => {
     if (!isProUser) {
-      showProModal("Export/Import erfordert das Pro-Upgrade ($5 Einmalkauf).");
+      showProModal(t("proGateExportImport"));
       return;
     }
     els.importFileInput.click();
@@ -395,7 +433,7 @@ function bindEvents() {
 
   els.ramCleanerBtn.addEventListener("click", () => {
     if (!isProUser) {
-      showProModal("RAM Cleaner erfordert das Pro-Upgrade ($5 Einmalkauf).");
+      showProModal(t("proGateRamCleaner"));
       return;
     }
     runRamCleaner();
@@ -409,6 +447,9 @@ function bindEvents() {
 }
 
 async function init() {
+  document.documentElement.lang = chrome.i18n.getUILanguage();
+  applyI18n(document);
+  els.proModalText.textContent = t("proGateGeneric");
   await loadStateFromStorage();
   renderWorkspaceList();
   bindEvents();

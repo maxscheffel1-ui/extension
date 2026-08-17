@@ -1,0 +1,259 @@
+{
+  "appName": {
+    "message": "Workspace & Session Manager"
+  },
+  "appDesc": {
+    "message": "Enregistrez vos onglets ouverts sous forme d'espaces de travail nommés, basculez entre eux en un clic et libérez de la RAM. La version Pro débloque des espaces de travail illimités, l'export/import et un nettoyeur de RAM."
+  },
+  "headerTitle": {
+    "message": "Workspace Manager"
+  },
+  "headerSubtitle": {
+    "message": "Enregistrer et changer d'onglets"
+  },
+  "proBadgeLabel": {
+    "message": "PRO"
+  },
+  "saveCurrentWorkspaceBtn": {
+    "message": "Enregistrer l'espace de travail actuel"
+  },
+  "workspaceNamePlaceholder": {
+    "message": "Nom, p. ex. Travail, Recherche, Personnel"
+  },
+  "saveBtn": {
+    "message": "Enregistrer"
+  },
+  "cancelBtn": {
+    "message": "Annuler"
+  },
+  "freeLimitUsage": {
+    "message": "$USED$ sur $LIMIT$ espaces de travail gratuits utilisés",
+    "placeholders": {
+      "used": {
+        "content": "$1"
+      },
+      "limit": {
+        "content": "$2"
+      }
+    }
+  },
+  "freeLimitUsageReached": {
+    "message": "$USED$ sur $LIMIT$ espaces de travail gratuits utilisés · Limite atteinte",
+    "placeholders": {
+      "used": {
+        "content": "$1"
+      },
+      "limit": {
+        "content": "$2"
+      }
+    }
+  },
+  "emptyStateTitle": {
+    "message": "Aucun espace de travail enregistré pour le moment."
+  },
+  "emptyStateHint": {
+    "message": "Enregistrez vos onglets actuellement ouverts pour changer rapidement de contexte."
+  },
+  "exportImportLabel": {
+    "message": "Exporter / importer les espaces de travail"
+  },
+  "exportBtn": {
+    "message": "Exporter"
+  },
+  "importBtn": {
+    "message": "Importer"
+  },
+  "ramCleanerBtn": {
+    "message": "Nettoyeur de RAM – fermer les onglets inactifs"
+  },
+  "footerText": {
+    "message": "Workspace & Session Manager · v1.0.0"
+  },
+  "proModalTitle": {
+    "message": "Fonctionnalité Pro"
+  },
+  "upgradeBtn": {
+    "message": "Passer à Pro"
+  },
+  "closeBtn": {
+    "message": "Fermer"
+  },
+  "proGateGeneric": {
+    "message": "Cette fonctionnalité nécessite la mise à niveau Pro (achat unique de 5 $)."
+  },
+  "proGateLimitReached": {
+    "message": "Vous avez atteint la limite gratuite de $LIMIT$ espaces de travail. Cette fonctionnalité nécessite la mise à niveau Pro (achat unique de 5 $).",
+    "placeholders": {
+      "limit": {
+        "content": "$1"
+      }
+    }
+  },
+  "proGateExportImport": {
+    "message": "L'export/import nécessite la mise à niveau Pro (achat unique de 5 $)."
+  },
+  "proGateRamCleaner": {
+    "message": "Le nettoyeur de RAM nécessite la mise à niveau Pro (achat unique de 5 $)."
+  },
+  "showTabsTitle": {
+    "message": "Afficher les onglets"
+  },
+  "switchBtn": {
+    "message": "Changer"
+  },
+  "switchingBtn": {
+    "message": "Changement…"
+  },
+  "renameTitle": {
+    "message": "Renommer"
+  },
+  "deleteTitle": {
+    "message": "Supprimer"
+  },
+  "removeTabTitle": {
+    "message": "Retirer l'onglet de l'espace de travail"
+  },
+  "renamePromptLabel": {
+    "message": "Nouveau nom pour l'espace de travail :"
+  },
+  "deleteConfirmMessage": {
+    "message": "Supprimer l'espace de travail « $NAME$ » ?",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastWorkspaceEmpty": {
+    "message": "Cet espace de travail ne contient plus aucun onglet."
+  },
+  "toastWorkspaceSwitched": {
+    "message": "Espace de travail « $NAME$ » chargé.",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastSwitchFailed": {
+    "message": "Échec du changement."
+  },
+  "toastNoTabsFound": {
+    "message": "Aucun onglet trouvé à enregistrer."
+  },
+  "toastWorkspaceSaved": {
+    "message": "Espace de travail « $NAME$ » enregistré.",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastSaveFailed": {
+    "message": "Échec de l'enregistrement."
+  },
+  "toastExportStarted": {
+    "message": "Export démarré."
+  },
+  "toastNoValidWorkspaces": {
+    "message": "Aucun espace de travail valide trouvé dans le fichier."
+  },
+  "toastImportedCountOne": {
+    "message": "$COUNT$ espace de travail importé.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastImportedCountOther": {
+    "message": "$COUNT$ espaces de travail importés.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastImportFailed": {
+    "message": "Échec de l'import : fichier invalide."
+  },
+  "toastNoWorkspacesToExport": {
+    "message": "Aucun espace de travail à exporter."
+  },
+  "toastRamCleanerClosedOne": {
+    "message": "$COUNT$ onglet en double/inactif fermé.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastRamCleanerClosedOther": {
+    "message": "$COUNT$ onglets en double/inactifs fermés.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastRamCleanerNone": {
+    "message": "Aucun onglet en double ou inactif trouvé."
+  },
+  "toastRamCleanerFailed": {
+    "message": "Échec du nettoyeur de RAM."
+  },
+  "genericErrorUnknown": {
+    "message": "Erreur inconnue"
+  },
+  "timeJustNow": {
+    "message": "à l'instant"
+  },
+  "timeMinutesAgo": {
+    "message": "il y a $COUNT$ min",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "timeHoursAgo": {
+    "message": "il y a $COUNT$ h",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "timeDaysAgoOne": {
+    "message": "il y a $COUNT$ jour",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "timeDaysAgoOther": {
+    "message": "il y a $COUNT$ jours",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "tabCountOne": {
+    "message": "$COUNT$ onglet",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "tabCountOther": {
+    "message": "$COUNT$ onglets",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  }
+}

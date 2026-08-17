@@ -1,0 +1,259 @@
+{
+  "appName": {
+    "message": "Workspace & Session Manager"
+  },
+  "appDesc": {
+    "message": "Guarda tus pestañas abiertas como espacios de trabajo con nombre, cambia entre ellos con un clic y libera memoria RAM. Pro desbloquea espacios de trabajo ilimitados, exportación/importación y un limpiador de RAM."
+  },
+  "headerTitle": {
+    "message": "Workspace Manager"
+  },
+  "headerSubtitle": {
+    "message": "Guardar y cambiar pestañas"
+  },
+  "proBadgeLabel": {
+    "message": "PRO"
+  },
+  "saveCurrentWorkspaceBtn": {
+    "message": "Guardar espacio de trabajo actual"
+  },
+  "workspaceNamePlaceholder": {
+    "message": "Nombre, p. ej. Trabajo, Investigación, Personal"
+  },
+  "saveBtn": {
+    "message": "Guardar"
+  },
+  "cancelBtn": {
+    "message": "Cancelar"
+  },
+  "freeLimitUsage": {
+    "message": "$USED$ de $LIMIT$ espacios de trabajo gratuitos usados",
+    "placeholders": {
+      "used": {
+        "content": "$1"
+      },
+      "limit": {
+        "content": "$2"
+      }
+    }
+  },
+  "freeLimitUsageReached": {
+    "message": "$USED$ de $LIMIT$ espacios de trabajo gratuitos usados · Límite alcanzado",
+    "placeholders": {
+      "used": {
+        "content": "$1"
+      },
+      "limit": {
+        "content": "$2"
+      }
+    }
+  },
+  "emptyStateTitle": {
+    "message": "Aún no hay espacios de trabajo guardados."
+  },
+  "emptyStateHint": {
+    "message": "Guarda tus pestañas abiertas actualmente para cambiar rápido entre contextos."
+  },
+  "exportImportLabel": {
+    "message": "Exportar / importar espacios de trabajo"
+  },
+  "exportBtn": {
+    "message": "Exportar"
+  },
+  "importBtn": {
+    "message": "Importar"
+  },
+  "ramCleanerBtn": {
+    "message": "Limpiador de RAM: cerrar pestañas inactivas"
+  },
+  "footerText": {
+    "message": "Workspace & Session Manager · v1.0.0"
+  },
+  "proModalTitle": {
+    "message": "Función Pro"
+  },
+  "upgradeBtn": {
+    "message": "Actualizar ahora"
+  },
+  "closeBtn": {
+    "message": "Cerrar"
+  },
+  "proGateGeneric": {
+    "message": "Esta función requiere la actualización Pro (pago único de $5)."
+  },
+  "proGateLimitReached": {
+    "message": "Has alcanzado el límite gratuito de $LIMIT$ espacios de trabajo. Esta función requiere la actualización Pro (pago único de $5).",
+    "placeholders": {
+      "limit": {
+        "content": "$1"
+      }
+    }
+  },
+  "proGateExportImport": {
+    "message": "Exportar/Importar requiere la actualización Pro (pago único de $5)."
+  },
+  "proGateRamCleaner": {
+    "message": "El limpiador de RAM requiere la actualización Pro (pago único de $5)."
+  },
+  "showTabsTitle": {
+    "message": "Mostrar pestañas"
+  },
+  "switchBtn": {
+    "message": "Cambiar"
+  },
+  "switchingBtn": {
+    "message": "Cambiando…"
+  },
+  "renameTitle": {
+    "message": "Renombrar"
+  },
+  "deleteTitle": {
+    "message": "Eliminar"
+  },
+  "removeTabTitle": {
+    "message": "Quitar pestaña del espacio de trabajo"
+  },
+  "renamePromptLabel": {
+    "message": "Nuevo nombre para el espacio de trabajo:"
+  },
+  "deleteConfirmMessage": {
+    "message": "¿Eliminar el espacio de trabajo \"$NAME$\"?",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastWorkspaceEmpty": {
+    "message": "Este espacio de trabajo ya no tiene pestañas."
+  },
+  "toastWorkspaceSwitched": {
+    "message": "Espacio de trabajo \"$NAME$\" cargado.",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastSwitchFailed": {
+    "message": "Error al cambiar."
+  },
+  "toastNoTabsFound": {
+    "message": "No se encontraron pestañas para guardar."
+  },
+  "toastWorkspaceSaved": {
+    "message": "Espacio de trabajo \"$NAME$\" guardado.",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastSaveFailed": {
+    "message": "Error al guardar."
+  },
+  "toastExportStarted": {
+    "message": "Exportación iniciada."
+  },
+  "toastNoValidWorkspaces": {
+    "message": "No se encontraron espacios de trabajo válidos en el archivo."
+  },
+  "toastImportedCountOne": {
+    "message": "$COUNT$ espacio de trabajo importado.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastImportedCountOther": {
+    "message": "$COUNT$ espacios de trabajo importados.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastImportFailed": {
+    "message": "Error al importar: archivo no válido."
+  },
+  "toastNoWorkspacesToExport": {
+    "message": "No hay espacios de trabajo para exportar."
+  },
+  "toastRamCleanerClosedOne": {
+    "message": "$COUNT$ pestaña duplicada/inactiva cerrada.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastRamCleanerClosedOther": {
+    "message": "$COUNT$ pestañas duplicadas/inactivas cerradas.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastRamCleanerNone": {
+    "message": "No se encontraron pestañas duplicadas ni inactivas."
+  },
+  "toastRamCleanerFailed": {
+    "message": "Error en el limpiador de RAM."
+  },
+  "genericErrorUnknown": {
+    "message": "Error desconocido"
+  },
+  "timeJustNow": {
+    "message": "justo ahora"
+  },
+  "timeMinutesAgo": {
+    "message": "hace $COUNT$ min",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "timeHoursAgo": {
+    "message": "hace $COUNT$ h",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "timeDaysAgoOne": {
+    "message": "hace $COUNT$ día",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "timeDaysAgoOther": {
+    "message": "hace $COUNT$ días",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "tabCountOne": {
+    "message": "$COUNT$ pestaña",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "tabCountOther": {
+    "message": "$COUNT$ pestañas",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  }
+}

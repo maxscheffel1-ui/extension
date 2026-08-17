@@ -1,0 +1,259 @@
+{
+  "appName": {
+    "message": "Workspace & Session Manager"
+  },
+  "appDesc": {
+    "message": "Save your open tabs as named workspaces, switch between them in one click, and free up RAM. Pro unlocks unlimited workspaces, export/import, and a RAM cleaner."
+  },
+  "headerTitle": {
+    "message": "Workspace Manager"
+  },
+  "headerSubtitle": {
+    "message": "Save & switch tabs"
+  },
+  "proBadgeLabel": {
+    "message": "PRO"
+  },
+  "saveCurrentWorkspaceBtn": {
+    "message": "Save current workspace"
+  },
+  "workspaceNamePlaceholder": {
+    "message": "Name, e.g. Work, Research, Personal"
+  },
+  "saveBtn": {
+    "message": "Save"
+  },
+  "cancelBtn": {
+    "message": "Cancel"
+  },
+  "freeLimitUsage": {
+    "message": "$USED$ of $LIMIT$ free workspaces used",
+    "placeholders": {
+      "used": {
+        "content": "$1"
+      },
+      "limit": {
+        "content": "$2"
+      }
+    }
+  },
+  "freeLimitUsageReached": {
+    "message": "$USED$ of $LIMIT$ free workspaces used · Limit reached",
+    "placeholders": {
+      "used": {
+        "content": "$1"
+      },
+      "limit": {
+        "content": "$2"
+      }
+    }
+  },
+  "emptyStateTitle": {
+    "message": "No workspaces saved yet."
+  },
+  "emptyStateHint": {
+    "message": "Save your currently open tabs to quickly switch between contexts."
+  },
+  "exportImportLabel": {
+    "message": "Export / import workspaces"
+  },
+  "exportBtn": {
+    "message": "Export"
+  },
+  "importBtn": {
+    "message": "Import"
+  },
+  "ramCleanerBtn": {
+    "message": "RAM Cleaner – close inactive tabs"
+  },
+  "footerText": {
+    "message": "Workspace & Session Manager · v1.0.0"
+  },
+  "proModalTitle": {
+    "message": "Pro Feature"
+  },
+  "upgradeBtn": {
+    "message": "Upgrade now"
+  },
+  "closeBtn": {
+    "message": "Close"
+  },
+  "proGateGeneric": {
+    "message": "This feature requires the Pro upgrade ($5 one-time purchase)."
+  },
+  "proGateLimitReached": {
+    "message": "You've reached the free limit of $LIMIT$ workspaces. This feature requires the Pro upgrade ($5 one-time purchase).",
+    "placeholders": {
+      "limit": {
+        "content": "$1"
+      }
+    }
+  },
+  "proGateExportImport": {
+    "message": "Export/Import requires the Pro upgrade ($5 one-time purchase)."
+  },
+  "proGateRamCleaner": {
+    "message": "RAM Cleaner requires the Pro upgrade ($5 one-time purchase)."
+  },
+  "showTabsTitle": {
+    "message": "Show tabs"
+  },
+  "switchBtn": {
+    "message": "Switch"
+  },
+  "switchingBtn": {
+    "message": "Switching…"
+  },
+  "renameTitle": {
+    "message": "Rename"
+  },
+  "deleteTitle": {
+    "message": "Delete"
+  },
+  "removeTabTitle": {
+    "message": "Remove tab from workspace"
+  },
+  "renamePromptLabel": {
+    "message": "New name for the workspace:"
+  },
+  "deleteConfirmMessage": {
+    "message": "Really delete workspace \"$NAME$\"?",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastWorkspaceEmpty": {
+    "message": "This workspace no longer has any tabs."
+  },
+  "toastWorkspaceSwitched": {
+    "message": "Workspace \"$NAME$\" loaded.",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastSwitchFailed": {
+    "message": "Switch failed."
+  },
+  "toastNoTabsFound": {
+    "message": "No tabs found to save."
+  },
+  "toastWorkspaceSaved": {
+    "message": "Workspace \"$NAME$\" saved.",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastSaveFailed": {
+    "message": "Save failed."
+  },
+  "toastExportStarted": {
+    "message": "Export started."
+  },
+  "toastNoValidWorkspaces": {
+    "message": "No valid workspaces found in the file."
+  },
+  "toastImportedCountOne": {
+    "message": "$COUNT$ workspace imported.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastImportedCountOther": {
+    "message": "$COUNT$ workspaces imported.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastImportFailed": {
+    "message": "Import failed: invalid file."
+  },
+  "toastNoWorkspacesToExport": {
+    "message": "No workspaces available to export."
+  },
+  "toastRamCleanerClosedOne": {
+    "message": "$COUNT$ duplicate/inactive tab closed.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastRamCleanerClosedOther": {
+    "message": "$COUNT$ duplicate/inactive tabs closed.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastRamCleanerNone": {
+    "message": "No duplicate or inactive tabs found."
+  },
+  "toastRamCleanerFailed": {
+    "message": "RAM Cleaner failed."
+  },
+  "genericErrorUnknown": {
+    "message": "Unknown error"
+  },
+  "timeJustNow": {
+    "message": "just now"
+  },
+  "timeMinutesAgo": {
+    "message": "$COUNT$ min. ago",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "timeHoursAgo": {
+    "message": "$COUNT$ h ago",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "timeDaysAgoOne": {
+    "message": "$COUNT$ day ago",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "timeDaysAgoOther": {
+    "message": "$COUNT$ days ago",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "tabCountOne": {
+    "message": "$COUNT$ tab",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "tabCountOther": {
+    "message": "$COUNT$ tabs",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  }
+}

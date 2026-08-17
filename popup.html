@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Workspace &amp; Session Manager</title>
+  <title data-i18n="appName">Workspace &amp; Session Manager</title>
   <link rel="stylesheet" href="popup.css" />
 </head>
 <body>
@@ -11,12 +11,12 @@
       <div class="brand">
         <img src="icons/icon32.png" alt="" class="brand-icon" />
         <div class="brand-text">
-          <h1>Workspace Manager</h1>
-          <span class="brand-subtitle">Tabs speichern &amp; wechseln</span>
+          <h1 data-i18n="headerTitle">Workspace Manager</h1>
+          <span class="brand-subtitle" data-i18n="headerSubtitle">Save &amp; switch tabs</span>
         </div>
       </div>
       <div class="header-actions">
-        <span id="proBadge" class="pro-badge pro-badge--hidden">PRO</span>
+        <span id="proBadge" class="pro-badge pro-badge--hidden" data-i18n="proBadgeLabel">PRO</span>
       </div>
     </header>
 
@@ -24,14 +24,14 @@
 
     <section class="create-section">
       <button type="button" id="showCreateFormBtn" class="btn btn--primary btn--full">
-        <span class="btn-plus">+</span> Aktuellen Workspace speichern
+        <span class="btn-plus">+</span> <span data-i18n="saveCurrentWorkspaceBtn">Save current workspace</span>
       </button>
 
       <div id="createForm" class="create-form create-form--hidden">
-        <input type="text" id="workspaceNameInput" class="text-input" placeholder="Name, z. B. Arbeit, Recherche, Privat" maxlength="60" />
+        <input type="text" id="workspaceNameInput" class="text-input" data-i18n-placeholder="workspaceNamePlaceholder" placeholder="Name, e.g. Work, Research, Personal" maxlength="60" />
         <div class="create-form__actions">
-          <button type="button" id="confirmCreateBtn" class="btn btn--primary">Speichern</button>
-          <button type="button" id="cancelCreateBtn" class="btn btn--ghost">Abbrechen</button>
+          <button type="button" id="confirmCreateBtn" class="btn btn--primary" data-i18n="saveBtn">Save</button>
+          <button type="button" id="cancelCreateBtn" class="btn btn--ghost" data-i18n="cancelBtn">Cancel</button>
         </div>
       </div>
 
@@ -40,39 +40,39 @@
 
     <section class="workspace-list-section">
       <div id="emptyState" class="empty-state empty-state--hidden">
-        <p>Noch keine Workspaces gespeichert.</p>
-        <p class="empty-state__hint">Speichere deine aktuell geöffneten Tabs, um schnell zwischen Kontexten zu wechseln.</p>
+        <p data-i18n="emptyStateTitle">No workspaces saved yet.</p>
+        <p class="empty-state__hint" data-i18n="emptyStateHint">Save your currently open tabs to quickly switch between contexts.</p>
       </div>
       <div id="workspaceList" class="workspace-list"></div>
     </section>
 
     <section class="pro-tools">
       <div class="pro-feature-group">
-        <span class="pro-feature-group__label"><span class="btn-lock" id="exportImportLock">&#128274;</span> Workspaces exportieren / importieren</span>
+        <span class="pro-feature-group__label"><span class="btn-lock" id="exportImportLock">&#128274;</span> <span data-i18n="exportImportLabel">Export / import workspaces</span></span>
         <div class="pro-feature-group__actions">
-          <button type="button" id="exportBtn" class="btn btn--secondary btn--small btn--half">Exportieren</button>
-          <button type="button" id="importBtn" class="btn btn--secondary btn--small btn--half">Importieren</button>
+          <button type="button" id="exportBtn" class="btn btn--secondary btn--small btn--half" data-i18n="exportBtn">Export</button>
+          <button type="button" id="importBtn" class="btn btn--secondary btn--small btn--half" data-i18n="importBtn">Import</button>
         </div>
       </div>
       <button type="button" id="ramCleanerBtn" class="btn btn--secondary btn--full">
-        <span class="btn-lock">&#128274;</span> RAM Cleaner &ndash; inaktive Tabs schließen
+        <span class="btn-lock">&#128274;</span> <span data-i18n="ramCleanerBtn">RAM Cleaner – close inactive tabs</span>
       </button>
       <input type="file" id="importFileInput" accept="application/json" hidden />
     </section>
 
     <footer class="app-footer">
-      <span class="app-footer__text">Workspace &amp; Session Manager · v1.0.0</span>
+      <span class="app-footer__text" data-i18n="footerText">Workspace &amp; Session Manager · v1.0.0</span>
     </footer>
   </div>
 
   <div id="proModalOverlay" class="modal-overlay modal-overlay--hidden">
     <div class="modal">
       <div class="modal__icon">&#10024;</div>
-      <h2 class="modal__title">Pro-Feature</h2>
-      <p class="modal__text" id="proModalText">Dieses Feature erfordert das Pro-Upgrade ($5 Einmalkauf).</p>
+      <h2 class="modal__title" data-i18n="proModalTitle">Pro Feature</h2>
+      <p class="modal__text" id="proModalText">This feature requires the Pro upgrade ($5 one-time purchase).</p>
       <div class="modal__actions">
-        <button type="button" id="modalUpgradeBtn" class="btn btn--primary">Jetzt upgraden</button>
-        <button type="button" id="modalCloseBtn" class="btn btn--ghost">Schließen</button>
+        <button type="button" id="modalUpgradeBtn" class="btn btn--primary" data-i18n="upgradeBtn">Upgrade now</button>
+        <button type="button" id="modalCloseBtn" class="btn btn--ghost" data-i18n="closeBtn">Close</button>
       </div>
     </div>
   </div>
@@ -84,14 +84,14 @@
           <h3 class="workspace-card__name"></h3>
           <span class="workspace-card__meta"></span>
         </div>
-        <button type="button" class="icon-btn workspace-card__toggle" title="Tabs anzeigen">
+        <button type="button" class="icon-btn workspace-card__toggle" data-i18n-title="showTabsTitle" title="Show tabs">
           <span class="chevron">&#9662;</span>
         </button>
       </div>
       <div class="workspace-card__actions">
-        <button type="button" class="btn btn--primary btn--small workspace-card__switch">Wechseln</button>
-        <button type="button" class="icon-btn workspace-card__rename" title="Umbenennen">&#9998;</button>
-        <button type="button" class="icon-btn icon-btn--danger workspace-card__delete" title="Löschen">&#128465;</button>
+        <button type="button" class="btn btn--primary btn--small workspace-card__switch" data-i18n="switchBtn">Switch</button>
+        <button type="button" class="icon-btn workspace-card__rename" data-i18n-title="renameTitle" title="Rename">&#9998;</button>
+        <button type="button" class="icon-btn icon-btn--danger workspace-card__delete" data-i18n-title="deleteTitle" title="Delete">&#128465;</button>
       </div>
       <div class="workspace-card__tabs workspace-card__tabs--hidden"></div>
     </article>
@@ -104,7 +104,7 @@
         <span class="tab-row__title"></span>
         <span class="tab-row__url"></span>
       </div>
-      <button type="button" class="icon-btn icon-btn--small tab-row__remove" title="Tab aus Workspace entfernen">&#10005;</button>
+      <button type="button" class="icon-btn icon-btn--small tab-row__remove" data-i18n-title="removeTabTitle" title="Remove tab from workspace">&#10005;</button>
     </div>
   </template>
 

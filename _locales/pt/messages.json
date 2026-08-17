@@ -1,0 +1,259 @@
+{
+  "appName": {
+    "message": "Workspace & Session Manager"
+  },
+  "appDesc": {
+    "message": "Guarde os separadores abertos como espaços de trabalho com nome, alterne entre eles com um clique e poupe RAM. O Pro desbloqueia espaços de trabalho ilimitados, exportação/importação e um limpador de RAM."
+  },
+  "headerTitle": {
+    "message": "Workspace Manager"
+  },
+  "headerSubtitle": {
+    "message": "Guardar e alternar separadores"
+  },
+  "proBadgeLabel": {
+    "message": "PRO"
+  },
+  "saveCurrentWorkspaceBtn": {
+    "message": "Guardar espaço de trabalho atual"
+  },
+  "workspaceNamePlaceholder": {
+    "message": "Nome, p. ex. Trabalho, Pesquisa, Pessoal"
+  },
+  "saveBtn": {
+    "message": "Guardar"
+  },
+  "cancelBtn": {
+    "message": "Cancelar"
+  },
+  "freeLimitUsage": {
+    "message": "$USED$ de $LIMIT$ espaços de trabalho gratuitos utilizados",
+    "placeholders": {
+      "used": {
+        "content": "$1"
+      },
+      "limit": {
+        "content": "$2"
+      }
+    }
+  },
+  "freeLimitUsageReached": {
+    "message": "$USED$ de $LIMIT$ espaços de trabalho gratuitos utilizados · Limite atingido",
+    "placeholders": {
+      "used": {
+        "content": "$1"
+      },
+      "limit": {
+        "content": "$2"
+      }
+    }
+  },
+  "emptyStateTitle": {
+    "message": "Ainda não há espaços de trabalho guardados."
+  },
+  "emptyStateHint": {
+    "message": "Guarde os separadores atualmente abertos para alternar rapidamente entre contextos."
+  },
+  "exportImportLabel": {
+    "message": "Exportar / importar espaços de trabalho"
+  },
+  "exportBtn": {
+    "message": "Exportar"
+  },
+  "importBtn": {
+    "message": "Importar"
+  },
+  "ramCleanerBtn": {
+    "message": "Limpador de RAM – fechar separadores inativos"
+  },
+  "footerText": {
+    "message": "Workspace & Session Manager · v1.0.0"
+  },
+  "proModalTitle": {
+    "message": "Funcionalidade Pro"
+  },
+  "upgradeBtn": {
+    "message": "Atualizar agora"
+  },
+  "closeBtn": {
+    "message": "Fechar"
+  },
+  "proGateGeneric": {
+    "message": "Esta funcionalidade requer a atualização Pro (compra única de $5)."
+  },
+  "proGateLimitReached": {
+    "message": "Atingiu o limite gratuito de $LIMIT$ espaços de trabalho. Esta funcionalidade requer a atualização Pro (compra única de $5).",
+    "placeholders": {
+      "limit": {
+        "content": "$1"
+      }
+    }
+  },
+  "proGateExportImport": {
+    "message": "Exportar/Importar requer a atualização Pro (compra única de $5)."
+  },
+  "proGateRamCleaner": {
+    "message": "O limpador de RAM requer a atualização Pro (compra única de $5)."
+  },
+  "showTabsTitle": {
+    "message": "Mostrar separadores"
+  },
+  "switchBtn": {
+    "message": "Alternar"
+  },
+  "switchingBtn": {
+    "message": "A alternar…"
+  },
+  "renameTitle": {
+    "message": "Renomear"
+  },
+  "deleteTitle": {
+    "message": "Eliminar"
+  },
+  "removeTabTitle": {
+    "message": "Remover separador do espaço de trabalho"
+  },
+  "renamePromptLabel": {
+    "message": "Novo nome para o espaço de trabalho:"
+  },
+  "deleteConfirmMessage": {
+    "message": "Eliminar mesmo o espaço de trabalho \"$NAME$\"?",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastWorkspaceEmpty": {
+    "message": "Este espaço de trabalho já não tem separadores."
+  },
+  "toastWorkspaceSwitched": {
+    "message": "Espaço de trabalho \"$NAME$\" carregado.",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastSwitchFailed": {
+    "message": "Falha ao alternar."
+  },
+  "toastNoTabsFound": {
+    "message": "Nenhum separador encontrado para guardar."
+  },
+  "toastWorkspaceSaved": {
+    "message": "Espaço de trabalho \"$NAME$\" guardado.",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastSaveFailed": {
+    "message": "Falha ao guardar."
+  },
+  "toastExportStarted": {
+    "message": "Exportação iniciada."
+  },
+  "toastNoValidWorkspaces": {
+    "message": "Não foram encontrados espaços de trabalho válidos no ficheiro."
+  },
+  "toastImportedCountOne": {
+    "message": "$COUNT$ espaço de trabalho importado.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastImportedCountOther": {
+    "message": "$COUNT$ espaços de trabalho importados.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastImportFailed": {
+    "message": "Falha na importação: ficheiro inválido."
+  },
+  "toastNoWorkspacesToExport": {
+    "message": "Não há espaços de trabalho para exportar."
+  },
+  "toastRamCleanerClosedOne": {
+    "message": "$COUNT$ separador duplicado/inativo fechado.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastRamCleanerClosedOther": {
+    "message": "$COUNT$ separadores duplicados/inativos fechados.",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastRamCleanerNone": {
+    "message": "Não foram encontrados separadores duplicados ou inativos."
+  },
+  "toastRamCleanerFailed": {
+    "message": "Falha no limpador de RAM."
+  },
+  "genericErrorUnknown": {
+    "message": "Erro desconhecido"
+  },
+  "timeJustNow": {
+    "message": "agora mesmo"
+  },
+  "timeMinutesAgo": {
+    "message": "há $COUNT$ min",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "timeHoursAgo": {
+    "message": "há $COUNT$ h",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "timeDaysAgoOne": {
+    "message": "há $COUNT$ dia",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "timeDaysAgoOther": {
+    "message": "há $COUNT$ dias",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "tabCountOne": {
+    "message": "$COUNT$ separador",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "tabCountOther": {
+    "message": "$COUNT$ separadores",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  }
+}

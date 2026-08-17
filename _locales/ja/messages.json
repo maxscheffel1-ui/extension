@@ -1,0 +1,259 @@
+{
+  "appName": {
+    "message": "Workspace & Session Manager"
+  },
+  "appDesc": {
+    "message": "開いているタブを名前付きワークスペースとして保存し、ワンクリックで切り替えてメモリを節約できます。Pro版ではワークスペース数無制限、エクスポート/インポート、RAMクリーナーが利用できます。"
+  },
+  "headerTitle": {
+    "message": "Workspace Manager"
+  },
+  "headerSubtitle": {
+    "message": "タブの保存と切り替え"
+  },
+  "proBadgeLabel": {
+    "message": "PRO"
+  },
+  "saveCurrentWorkspaceBtn": {
+    "message": "現在のワークスペースを保存"
+  },
+  "workspaceNamePlaceholder": {
+    "message": "名前(例: 仕事、調査、プライベート)"
+  },
+  "saveBtn": {
+    "message": "保存"
+  },
+  "cancelBtn": {
+    "message": "キャンセル"
+  },
+  "freeLimitUsage": {
+    "message": "無料ワークスペース $LIMIT$ 件中 $USED$ 件を使用",
+    "placeholders": {
+      "used": {
+        "content": "$1"
+      },
+      "limit": {
+        "content": "$2"
+      }
+    }
+  },
+  "freeLimitUsageReached": {
+    "message": "無料ワークスペース $LIMIT$ 件中 $USED$ 件を使用 · 上限に達しました",
+    "placeholders": {
+      "used": {
+        "content": "$1"
+      },
+      "limit": {
+        "content": "$2"
+      }
+    }
+  },
+  "emptyStateTitle": {
+    "message": "保存されたワークスペースはまだありません。"
+  },
+  "emptyStateHint": {
+    "message": "現在開いているタブを保存すると、コンテキストをすばやく切り替えられます。"
+  },
+  "exportImportLabel": {
+    "message": "ワークスペースのエクスポート / インポート"
+  },
+  "exportBtn": {
+    "message": "エクスポート"
+  },
+  "importBtn": {
+    "message": "インポート"
+  },
+  "ramCleanerBtn": {
+    "message": "RAMクリーナー – 非アクティブなタブを閉じる"
+  },
+  "footerText": {
+    "message": "Workspace & Session Manager · v1.0.0"
+  },
+  "proModalTitle": {
+    "message": "Pro機能"
+  },
+  "upgradeBtn": {
+    "message": "今すぐアップグレード"
+  },
+  "closeBtn": {
+    "message": "閉じる"
+  },
+  "proGateGeneric": {
+    "message": "この機能を利用するにはPro版へのアップグレード(5ドルの買い切り)が必要です。"
+  },
+  "proGateLimitReached": {
+    "message": "無料プランのワークスペース上限($LIMIT$ 件)に達しました。この機能を利用するにはPro版へのアップグレード(5ドルの買い切り)が必要です。",
+    "placeholders": {
+      "limit": {
+        "content": "$1"
+      }
+    }
+  },
+  "proGateExportImport": {
+    "message": "エクスポート/インポートにはPro版へのアップグレード(5ドルの買い切り)が必要です。"
+  },
+  "proGateRamCleaner": {
+    "message": "RAMクリーナーにはPro版へのアップグレード(5ドルの買い切り)が必要です。"
+  },
+  "showTabsTitle": {
+    "message": "タブを表示"
+  },
+  "switchBtn": {
+    "message": "切り替え"
+  },
+  "switchingBtn": {
+    "message": "切り替え中…"
+  },
+  "renameTitle": {
+    "message": "名前を変更"
+  },
+  "deleteTitle": {
+    "message": "削除"
+  },
+  "removeTabTitle": {
+    "message": "ワークスペースからタブを削除"
+  },
+  "renamePromptLabel": {
+    "message": "ワークスペースの新しい名前:"
+  },
+  "deleteConfirmMessage": {
+    "message": "ワークスペース「$NAME$」を本当に削除しますか?",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastWorkspaceEmpty": {
+    "message": "このワークスペースにはタブがもうありません。"
+  },
+  "toastWorkspaceSwitched": {
+    "message": "ワークスペース「$NAME$」を読み込みました。",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastSwitchFailed": {
+    "message": "切り替えに失敗しました。"
+  },
+  "toastNoTabsFound": {
+    "message": "保存できるタブが見つかりませんでした。"
+  },
+  "toastWorkspaceSaved": {
+    "message": "ワークスペース「$NAME$」を保存しました。",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastSaveFailed": {
+    "message": "保存に失敗しました。"
+  },
+  "toastExportStarted": {
+    "message": "エクスポートを開始しました。"
+  },
+  "toastNoValidWorkspaces": {
+    "message": "ファイル内に有効なワークスペースが見つかりませんでした。"
+  },
+  "toastImportedCountOne": {
+    "message": "$COUNT$ 件のワークスペースをインポートしました。",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastImportedCountOther": {
+    "message": "$COUNT$ 件のワークスペースをインポートしました。",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastImportFailed": {
+    "message": "インポートに失敗しました:無効なファイルです。"
+  },
+  "toastNoWorkspacesToExport": {
+    "message": "エクスポートできるワークスペースがありません。"
+  },
+  "toastRamCleanerClosedOne": {
+    "message": "重複/非アクティブなタブを $COUNT$ 件閉じました。",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastRamCleanerClosedOther": {
+    "message": "重複/非アクティブなタブを $COUNT$ 件閉じました。",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "toastRamCleanerNone": {
+    "message": "重複または非アクティブなタブは見つかりませんでした。"
+  },
+  "toastRamCleanerFailed": {
+    "message": "RAMクリーナーに失敗しました。"
+  },
+  "genericErrorUnknown": {
+    "message": "不明なエラー"
+  },
+  "timeJustNow": {
+    "message": "たった今"
+  },
+  "timeMinutesAgo": {
+    "message": "$COUNT$ 分前",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "timeHoursAgo": {
+    "message": "$COUNT$ 時間前",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "timeDaysAgoOne": {
+    "message": "$COUNT$ 日前",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "timeDaysAgoOther": {
+    "message": "$COUNT$ 日前",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "tabCountOne": {
+    "message": "$COUNT$ 個のタブ",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "tabCountOther": {
+    "message": "$COUNT$ 個のタブ",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  }
+}
